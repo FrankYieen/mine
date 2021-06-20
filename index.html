@@ -9,7 +9,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+ 
   <style type="text/css">
+    @font-face { font-family: '华文新魏';  src: url('./华文新魏.ttf'); }  
     #app {
       width: 100%;
       height: 120vh;
@@ -17,27 +19,32 @@
 
     .top {
       width: 100%;
-      height: 10vh;
+      height: 20vh;
       box-sizing: border-box;
-      padding: 0 20vw;
+      font-size: 50px;
+      padding-left: 30vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background-color: rgb(49,16,55);
+      color: white;
+      font-family: "华文新魏";
     }
 
     .select {
       display: flex;
       height: 50px;
       align-items: center;
-      background-color: cornflowerblue;
+      background-color: rgb(76,34,84);
       justify-content: space-between;
       box-sizing: border-box;
       padding: 0 20vw;
+      color: white;
     }
 
     a {
       text-decoration: none;
-      color: rgb(85, 26, 169);
+      color: white;
     }
 
     .el-carousel__item h3 {
@@ -58,68 +65,129 @@
 
     .Carousel {
       position: absolute;
-      top: 140px;
+      top: 210px;
       left: 0px;
       z-index: -1;
       width: 100%;
-      height: 550px;
+      height: 500px;
     }
 
     .card{
       position: absolute;
-      top: 700px;
-      left: 0px;
-      width: 80%;
-      height: 20%;
+      top: 540px;
+      left: 30vw;
+      width: 300px;
+      height: 130px;
       margin-left: 10%;
       border-radius: 10px;
       box-sizing: border-box;
-      padding: 10px 20px;
-      border:1px solid blueviolet;
+      padding: 20px 42px;
+      border:1px dotted  blueviolet;
+      background-color: rgb(96, 189, 206);
+    }
+
+    .bottom {
+      position: absolute;
+      top: 700px;
+      left: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 40vw;
+      height: 25vh;
+      margin-left: 30vw;
+      border-radius: 10px;
+      box-sizing: border-box;
+      padding: 25px 30px;
+      border: 1px solid rgb(180, 245, 120);
+      background-color: rgb(233, 231, 129);
+    }
+
+    .Carousel1 {
+      height: 5vw;
+      width: 15vw;
+      overflow: hidden;
+    }
+
+
+    .text {
+      width: 15vw;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+    }
+
+    .logo{
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
     }
   </style>
 </head>
 
 <body>
   <div id='app'>
+    <div class="logo">
+      <a href="http://www.huas.edu.cn/">
+        <el-image src="./logo.jpg">
+        </el-image>
+      </a>
+    </div>
     <div class="top">
       <div style="height: 60px;display: flex; align-items: center; justify-content: center;">
-        <el-image style="width: 80px;" src="./logo.jpg"></el-image>
-        <h3>湖南文理学院体育学院</h3>
-      </div>
-      <div>
-        <div style="margin-bottom: 5px;"><i class="el-icon-house"></i><a style="font-size: 10px;"
-            href="http://www.huas.edu.cn/">学校首页</a></div>
-        <div>
-          <el-input style="width: 150px;" size="mini"  v-model="input" placeholder="请输入关键词搜索" suffix-icon="el-icon-search" rows=1>
-          </el-input>
-        </div>
+        <h3>湖南文理学院艺术学院</h3>
       </div>
     </div>
     <div class="select">
       <el-dropdown :hide-on-click="false">
         <span class="el-dropdown-link">
-          <a style="text-decoration: none;" href="./index.html">网站首页</a><i></i>
+          <a style="text-decoration: none;" href="./index.html">首页</a><i></i>
         </span>
       </el-dropdown>
       <el-dropdown :hide-on-click="false">
         <span class="el-dropdown-link">
           <a style="text-decoration: none;" href="./index.html">学院概况</a><i></i>
         </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>学院简章</el-dropdown-item>
+        <el-dropdown-menu  slot="dropdown">
+          <el-dropdown-item>学院简历</el-dropdown-item>
+          <el-dropdown-item>院长致辞</el-dropdown-item>
           <el-dropdown-item>现任领导</el-dropdown-item>
           <el-dropdown-item>机构设置</el-dropdown-item>
-          <el-dropdown-item>场馆设施</el-dropdown-item>
+          <el-dropdown-item>师资力量</el-dropdown-item>
+          <el-dropdown-item>学生风采</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown :hide-on-click="false">
         <span class="el-dropdown-link">
-          <a style="text-decoration: none;" href="./index.html">师资队伍</a><i></i>
+          <a style="text-decoration: none;" href="./index.html">新闻动态</a><i></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>教授博士</el-dropdown-item>
-          <el-dropdown-item>教师队伍</el-dropdown-item>
+          <el-dropdown-item>学院新闻</el-dropdown-item>
+          <el-dropdown-item>通知公告</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <el-dropdown :hide-on-click="false">
+        <span class="el-dropdown-link">
+          <a style="text-decoration: none;" href="./index.html">人才培养</a><i></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>专业介绍</el-dropdown-item>
+          <el-dropdown-item>教务信息</el-dropdown-item>
+          <el-dropdown-item>实践实训</el-dropdown-item>
+          <el-dropdown-item>学科竞赛</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <el-dropdown :hide-on-click="false">
+        <span class="el-dropdown-link">
+          <a style="text-decoration: none;" href="./index.html">学术科研</a><i></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>科研动态</el-dropdown-item>
+          <el-dropdown-item>学术交流</el-dropdown-item>
+          <el-dropdown-item>科研成果</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown :hide-on-click="false">
@@ -127,20 +195,14 @@
           <a style="text-decoration: none;" href="./index.html">党群工作</a><i></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>组织建设</el-dropdown-item>
-          <el-dropdown-item>党员发展</el-dropdown-item>
-          <el-dropdown-item>教育管理</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-      <el-dropdown :hide-on-click="false">
-        <span class="el-dropdown-link">
-          <a style="text-decoration: none;" href="./index.html">教学科研</a><i></i>
-        </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>教务信息</el-dropdown-item>
-          <el-dropdown-item>学术活动</el-dropdown-item>
-          <el-dropdown-item>实验室</el-dropdown-item>
-          <el-dropdown-item>科研成果</el-dropdown-item>
+          <el-dropdown-item>组织机构</el-dropdown-item>
+          <el-dropdown-item>组织发展</el-dropdown-item>
+          <el-dropdown-item>党员活动</el-dropdown-item>
+          <el-dropdown-item>规章制度</el-dropdown-item>
+          <el-dropdown-item>专题教育</el-dropdown-item>
+          <el-dropdown-item>党员风采</el-dropdown-item>
+          <el-dropdown-item>工会工作</el-dropdown-item>
+          <el-dropdown-item>关工委工作</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown :hide-on-click="false">
@@ -155,27 +217,28 @@
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item><a href="http://tiyu.huas.edu.cn/zsjy/zyjs.htm" style="color: black;">专业介绍</a>
           </el-dropdown-item>
-          <el-dropdown-item>往年数据录取</el-dropdown-item>
+          <el-dropdown-item>历年分数</el-dropdown-item>
+          <el-dropdown-item>云招聘</el-dropdown-item>
           <el-dropdown-item>就业信息</el-dropdown-item>
           <el-dropdown-item>就业指导</el-dropdown-item>
-          <el-dropdown-item>学生考研</el-dropdown-item>
+          <el-dropdown-item>考研专栏</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-dropdown :hide-on-click="false">
         <span class="el-dropdown-link">
-          <a style="text-decoration: none;" href="http://tiyu.huas.edu.cn/xyfc.htm">校友风采</a><i></i>
+          <a style="text-decoration: none;" href="http://tiyu.huas.edu.cn/xyfc.htm">校友之窗</a><i></i>
         </span>
       </el-dropdown>
       <el-dropdown :hide-on-click="false">
         <span class="el-dropdown-link">
-          <a style="text-decoration: none;" href="http://tiyu.huas.edu.cn/zlxz.htm">资料下载</a><i></i>
+          <a style="text-decoration: none;" href="http://tiyu.huas.edu.cn/zlxz.htm">下载信息</a><i></i>
         </span>
       </el-dropdown>
     </div>
     <div class="Carousel">
       <div class="block">
-        <el-carousel trigger="click" height="550px">
-          <el-carousel-item v-for="(item,index) in list" :key="item">
+        <el-carousel trigger="click" height="300px">
+          <el-carousel-item v-for="(item,index) in list" :key="item" style="display: flex;justify-content: center;">
               <el-image :src="item.src">
               </el-image>
           </el-carousel-item>
@@ -183,14 +246,30 @@
       </div>
     </div>
     <div class="card">
-      <div style="font-size: 20px;">姓名：韩桂玮</div>
-      <div>学号：202003020103</div>
-      <div>学院: 湖南文理学院体育学院</div>
-      <div>专业：社会体育指导与管理</div>
-      <div>专项：足球</div>
-      <div>爱好：平时喜欢散散步</div>
+      <div style="font-size: 20px;">姓名：丁玲</div>
+      <div>学号：202006010213</div>
+      <div>学院: 湖南文理学院艺术学院</div>
+      <div>爱好：喜欢跳舞，打篮球</div>
     </div>
-    <div></div>
+    <div class="bottom">
+      <div class="Carousel1">
+        <div class="block">
+          <el-carousel indicator-position="none">
+            <el-carousel-item v-for="(item,index) in Mlist" :key="item">
+              <a href="http://www.huas.edu.cn/wzsy.htm">
+                <el-image :src="item.src">
+                </el-image>
+              </a>
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+      </div>
+      <div class="text">
+        湖南文理学院是一所由湖南省人民政府主办的全日制普通本科院校。学校位于全国文明城市、国际湿地城市、国家卫生城市、中国优秀旅游城市、“桃花源里的城市”——湖南省常德市。
+        学校始于1958年创办的常德师范高等专科学校,
+        1999年，原常德师范高等专科学校和原常德高等专科学校合并组建常德师范学院，升格为本科院校，2003年更为现名，先后汇集了湖南农学院常德分院、常德教育学院、常德市城乡建设职业技术学校、常德艺术学校各自学科专业优势，至今已有62年高等教育办学历史。学校2016年被确定为国家“产教融合工程应用型本科规划高校”，2017年被确定为新增硕士学位授予立项建设单位，2018年被确认为湖南省“双一流”高水平应用特色学院，2018年高水平通过了教育部本科教学工作审核评估，是“全国模范职工之家”“湖南省文明标兵单位”“省级园林式单位”“湖南省平安高校”“湖南省现代大学制度建设先进高校”。2020年起，学校调入湖南省本科一批录取高校。
+      </div>
+    </div>
   </div>
   <script type="text/javascript">
     var vm = new Vue({
@@ -198,10 +277,26 @@
       data: {
         input:"",
         list:[
-          {src:"http://tiyu.huas.edu.cn/images/banner01.jpg"},
-          {src:"http://tiyu.huas.edu.cn/images/banner02.jpg"},
-          {src:"http://tiyu.huas.edu.cn/images/banner03.jpg"},
-          {src:"http://tiyu.huas.edu.cn/images/banner04.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/zsxc.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/yyxz.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/lyc.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/jh.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/2021hqpp2.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/mv.jpg"},
+          {src:"http://ysxy.huas.edu.cn/images/2021byz.jpg"},
+        ],
+        Mlist: [{
+            src: "http://www.huas.edu.cn/images/jd100.jpg"
+          },
+          {
+            src: "http://www.huas.edu.cn/images/ddh.jpg"
+          },
+          {
+            src: "http://www.huas.edu.cn/images/ddh1.jpg"
+          },
+          {
+            src: "http://www.huas.edu.cn/images/kangyi2.jpg"
+          },
         ],
       },
       methods: {
